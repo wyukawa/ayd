@@ -8,15 +8,15 @@ from cliff.app import App
 from cliff.commandmanager import CommandManager
 
 
-class Chaco(App):
+class Ayd(App):
 
     log = logging.getLogger(__name__)
 
     def __init__(self):
-        super(Chaco, self).__init__(
-            description='genereate Azkaban Job File',
+        super(Ayd, self).__init__(
+            description='genereate Azkaban Job Zip File',
             version='0.0.1',
-            command_manager=CommandManager('chaco'),
+            command_manager=CommandManager('ayd'),
             )
 
     def initialize_app(self, argv):
@@ -32,7 +32,7 @@ class Chaco(App):
 
 
 def main(argv=sys.argv[1:]):
-    app = Chaco()
+    app = Ayd()
     return app.run(argv)
 
 

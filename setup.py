@@ -4,19 +4,19 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='chaco',
+    name='ayd',
     version='0.0.1',
     description='generate Azkaban Job File',
     long_description=open('README.md').read(),
     author='wyukawa',
     author_email='wyukawa@gmail.com',
-    url='https://github.com/wyukawa/chaco',
+    url='https://github.com/wyukawa/ayd',
     license='MIT',
     packages=find_packages(),
     classifiers=[
       'Development Status :: 3 - Alpha',
       'Intended Audience :: Developers',
-      'License :: OSI Approved :: Apache License',
+      'License :: OSI Approved :: MIT License',
       'Programming Language :: Python',
       'Programming Language :: Python :: 2.7',
       'Environment :: Console',
@@ -27,10 +27,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'chaco = chaco.main:main'
+            'ayd = ayd.main:main'
         ],
-        'chaco': [
-            'generateJob = chaco.generate_job:Generate_Job'
+        'ayd': [
+            'generateJob = ayd.generate_job:Generate_Job'
         ]
     },
 )
