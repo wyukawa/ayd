@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 setup(
     name='ayd',
     version='0.0.1',
-    description='generate Azkaban Job File',
+    description='generate Azkaban Job Zip File',
     long_description=open('README.md').read(),
     author='wyukawa',
     author_email='wyukawa@gmail.com',
