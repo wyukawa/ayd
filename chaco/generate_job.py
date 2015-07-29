@@ -16,15 +16,15 @@ class Generate_Job(Command):
 
     def get_parser(self, prog_name):
         parser = super(Generate_Job, self).get_parser(prog_name)
-        parser.add_argument('--job_yaml', required=True)
+        parser.add_argument('--jobyaml', required=True)
         parser.add_argument('--propertyfile', required=True)
         parser.add_argument('--outputdir', required=True)
         return parser
 
     def take_action(self, parsed_args):
-        job_yaml = parsed_args.job_yaml
-        if os.path.exists(job_yaml) == False:
-            raise Exception("%s doesn't exist" % (job_yaml))
+        jobyaml = parsed_args.jobyaml
+        if os.path.exists(jobyaml) == False:
+            raise Exception("%s doesn't exist" % (jobyaml))
 
         propertyfile = parsed_args.propertyfile
         if os.path.exists(propertyfile) == False:
@@ -35,7 +35,7 @@ class Generate_Job(Command):
             raise Exception("%s already exists" % (outputdir))
         os.mkdir(outputdir)
 
-        with open(job_yaml, "r") as f:
+        with open(jobyaml, "r") as f:
             y = yaml.load(f)
             zipfile_path = os.path.join(outputdir, os.path.basename(f.name) + ".zip")
             zip = zipfile.ZipFile(zipfile_path, "w", zipfile.ZIP_DEFLATED)
