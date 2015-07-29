@@ -22,7 +22,8 @@ setup(
       'Environment :: Console',
     ],
     install_requires=[
-      'cliff'
+      'cliff',
+      'PyYAML'
     ],
     entry_points={
         'console_scripts': [
