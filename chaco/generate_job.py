@@ -34,16 +34,19 @@ class Generate_Job(Command):
             zipfile_path = os.path.join(outputdir, os.path.basename(f.name) + ".zip")
             zip = zipfile.ZipFile(zipfile_path, "w", zipfile.ZIP_DEFLATED)
             for flow_name, flow_content in y.items():
-              self.log.debug("flow_name=%s, flow_content=%s" % (flow_name, flow_content))
-              flow_dir = os.path.join(outputdir, flow_name)
-              os.mkdir(flow_dir)
-              job_file_name = flow_name + ".job"
-              job_file_path = os.path.join(flow_dir, job_file_name)
-              with open(job_file_path, "w") as o:
-                for k, v in flow_content.items():
-                  o.write(k + "=" + str(v))
-                  o.write("\n")
+                self.log.debug("flow_name=%s, flow_content=%s" % (flow_name, flow_content))
+                flow_dir = os.path.join(outputdir, flow_name)
+                os.mkdir(flow_dir)
+                job_file_name = flow_name + ".job"
+                job_file_path = os.path.join(flow_dir, job_file_name)
+                with open(job_file_path, "w") as o:
+                    for k, v in flow_content.items():
+                        if v is None:
+                            raise Exception("%s at %s has no value" % (k, flow_name))
+                        if k == "type" or k == "dependencies" or k == "retries" or k == "retry.backoff" or k[0:7] == "command":
+                            o.write(k + "=" + str(v))
+                            o.write("\n")
           
-              zip.write(job_file_path)
-              os.remove(job_file_path)
-              os.rmdir(flow_dir)
+                zip.write(job_file_path)
+                os.remove(job_file_path)
+                os.rmdir(flow_dir)
