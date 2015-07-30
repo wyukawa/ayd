@@ -3,7 +3,6 @@
 
 import os
 import yaml
-import shutil
 
 import logging
 
@@ -16,7 +15,6 @@ class Generate_Job(Command):
     def get_parser(self, prog_name):
         parser = super(Generate_Job, self).get_parser(prog_name)
         parser.add_argument('--jobyaml', required=True)
-        parser.add_argument('--propertyfile')
         parser.add_argument('--outputdir', required=True)
         return parser
 
@@ -32,13 +30,6 @@ class Generate_Job(Command):
 
         with open(jobyaml, "r") as f:
             y = yaml.load(f)
-
-            if parsed_args.propertyfile:
-                propertyfile = parsed_args.propertyfile
-                if os.path.exists(propertyfile) == False:
-                    raise Exception("%s doesn't exist" % (propertyfile))
-                shutil.copy(propertyfile, outputdir)
-
             for flow_name, flow_content in y.items():
                 self.log.debug("flow_name=%s, flow_content=%s" % (flow_name, flow_content))
                 flow_dir = os.path.join(outputdir, flow_name)
