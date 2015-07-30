@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 import os
-import zipfile
 import yaml
 import shutil
 
@@ -33,17 +32,12 @@ class Generate_Job(Command):
 
         with open(jobyaml, "r") as f:
             y = yaml.load(f)
-            zipfile_path = os.path.join(outputdir, os.path.basename(f.name) + ".zip")
-            zip = zipfile.ZipFile(zipfile_path, "w", zipfile.ZIP_DEFLATED)
 
             if parsed_args.propertyfile:
                 propertyfile = parsed_args.propertyfile
                 if os.path.exists(propertyfile) == False:
                     raise Exception("%s doesn't exist" % (propertyfile))
                 shutil.copy(propertyfile, outputdir)
-                p = os.path.join(outputdir, os.path.basename(propertyfile))
-                zip.write(p)
-                os.remove(p)
 
             for flow_name, flow_content in y.items():
                 self.log.debug("flow_name=%s, flow_content=%s" % (flow_name, flow_content))
@@ -58,7 +52,3 @@ class Generate_Job(Command):
                         if k == "type" or k == "dependencies" or k == "retries" or k == "retry.backoff" or k[0:7] == "command":
                             o.write(k + "=" + str(v))
                             o.write("\n")
-          
-                zip.write(job_file_path)
-                os.remove(job_file_path)
-                os.rmdir(flow_dir)
