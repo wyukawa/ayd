@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='ayd',
-    version='0.0.2',
+    version='0.0.3',
     description='generate Azkaban Flow',
     long_description=open('README.md').read(),
     author='wyukawa',
