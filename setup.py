@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 setup(
     name='ayd',
     version='0.0.2',
-    description='generate Azkaban Job Zip File',
+    description='generate Azkaban Flow File',
     long_description=open('README.md').read(),
     author='wyukawa',
     author_email='wyukawa@gmail.com',
@@ -30,7 +30,7 @@ setup(
             'ayd = ayd.main:main'
         ],
         'ayd': [
-            'generateJob = ayd.generate_job:Generate_Job'
+            'generateFlow = ayd.generate_flow:Generate_Flow'
         ]
     },
 )
