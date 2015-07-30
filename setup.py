@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 setup(
     name='ayd',
     version='0.0.2',
-    description='generate Azkaban Flow File',
+    description='generate Azkaban Flow',
     long_description=open('README.md').read(),
     author='wyukawa',
     author_email='wyukawa@gmail.com',

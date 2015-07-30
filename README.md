@@ -1,6 +1,6 @@
 # ayd
 
-ayd generates Azkaban Job Zip File based on Azkaban YAML DSL.
+ayd generates Azkaban Flow based on Azkaban YAML DSL.
 
 ##Prerequisites
 Python 2.7
@@ -51,11 +51,11 @@ piyo:
 
 * execute
 ```
-ayd generateJob --jobyaml aaa.yaml --outputdir aaa
+ayd generateFlow --flowyaml aaa.yaml --outputdir aaa
 ```
 
-then, aaa/aaa.yaml.zip is generated.
+then, Azkaban Flow is generated.
 
-If you upload aaa/aaa.yaml.zip, Azkaban Job is the following.
+If you archive aaa directory and upload aaa.zip, Azkaban Flow is the following.
 
 ![ayd](screenshot/azkaban_job.png)
