@@ -30,7 +30,8 @@ setup(
             'ayd = ayd.main:main'
         ],
         'ayd': [
-            'generateFlow = ayd.generate_flow:Generate_Flow'
+            'generateFlow = ayd.generate_flow:Generate_Flow',
+            'migrate = ayd.migrate:Migrate'
         ]
     },
 )
