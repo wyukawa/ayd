@@ -59,3 +59,10 @@ then, Azkaban Flow is generated.
 If you archive aaa directory and upload aaa.zip, Azkaban Flow is the following.
 
 ![ayd](screenshot/azkaban_job.png)
+
+* migrate
+
+If you want to migrate Azkaban Job File, use migrate
+```
+ayd migrate --jobdir azkaban_job_dir --outputyaml aaa.yaml
+```
