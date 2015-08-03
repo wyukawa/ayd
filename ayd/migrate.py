@@ -37,6 +37,9 @@ class Migrate(Command):
                             for line in lines:
                                 kv = line.split("=")
                                 if len(kv) == 2 and len(kv[1]) > 0:
-                                    dict[kv[0]] = kv[1]
+                                    if kv[0] == "retries" or kv[0] == "retry.backoff":
+                                        dict[kv[0]] = int(kv[1])
+                                    else:
+                                        dict[kv[0]] = kv[1]
                             o.write(yaml.dump({filename.rstrip(".job"):dict}, default_flow_style=False))
                             o.write("\n")
