@@ -41,5 +41,8 @@ class Migrate(Command):
                                         dict[kv[0]] = int(kv[1])
                                     else:
                                         dict[kv[0]] = kv[1]
-                            o.write(yaml.dump({filename.rstrip(".job"):dict}, default_flow_style=False))
+                            
+                            if filename[-len(".job"):] == ".job":
+                               filename = filename[:-len(".job")]
+                            o.write(yaml.dump({filename:dict}, default_flow_style=False))
                             o.write("\n")
