@@ -15,7 +15,7 @@ class Ayd(App):
     def __init__(self):
         super(Ayd, self).__init__(
             description='genereate Azkaban Flow',
-            version='0.0.5',
+            version='0.0.6',
             command_manager=CommandManager('ayd'),
             )
 
