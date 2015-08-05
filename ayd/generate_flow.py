@@ -40,6 +40,6 @@ class Generate_Flow(Command):
                     for k, v in job_content.items():
                         if v is None:
                             raise Exception("%s at %s has no value" % (k, job_name))
-                        if k == "type" or k == "dependencies" or k == "retries" or k == "retry.backoff" or k[0:7] == "command":
+                        if k == "type" or k == "dependencies" or k == "retries" or k == "retry.backoff" or k[0:7] == "command" or k == "flow.name":
                             o.write(k + "=" + str(v))
                             o.write("\n")
