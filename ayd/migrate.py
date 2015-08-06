@@ -42,7 +42,6 @@ class Migrate(Command):
                                     else:
                                         dict[kv[0]] = kv[1]
                             
-                            if filename[-len(".job"):] == ".job":
-                               filename = filename[:-len(".job")]
+                            filename = filename[:-len(".job")]
                             o.write(yaml.dump({filename:dict}, default_flow_style=False))
                             o.write("\n")
